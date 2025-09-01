@@ -2,7 +2,8 @@
 close_system('sl_groundvehicleDynamics',0);
  
 
-
+waypoints.x = randi([-500 500],1,10);
+waypoints.y = randi([-500 500],1,10);
 
 %% add toolboxes to path
 homedir = pwd; 
