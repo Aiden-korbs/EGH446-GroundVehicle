@@ -1,5 +1,6 @@
 %% close previously open model
 close_system('sl_groundvehicleDynamics',0);
+clear all;
  
 
 waypoints.x = randi([-500 500],1,10);
