@@ -3,7 +3,7 @@ close all; clear all; clc;
 
 % randomised waypoint list
 num_waypoints = 10;
-waypoints = randi([-100 100], num_waypoints, 2);
+waypoints = randi([-500 500], num_waypoints, 2);
 
 % set up waypoint index array and empty route array
 waypoint_idx = 1:num_waypoints;
@@ -29,6 +29,8 @@ for i = 1:num_waypoints-1
     waypoint_idx(min_idx) = [];
 
 end
+% make list for n-n route
+n_n_route = route;
 
 %% 2-opt swap
 % optimise n-n generated route with 2-opt swap
@@ -81,7 +83,23 @@ hold on;
 plot(waypoints(route, 1), waypoints(route, 2), 'b--');
 plot(waypoints(route, 1), waypoints(route, 2), 'r*');
 p_route(waypoints, 1:num_waypoints, num_waypoints);
-title('Optimised NN with 2-opt swap route');
+title('Optimised N-N with 2-opt swap route');
+
+% plot unoptimised route
+figure();
+hold on;
+plot(waypoints(n_n_route, 1), waypoints(n_n_route, 2), 'b--');
+plot(waypoints(n_n_route, 1), waypoints(n_n_route, 2), 'r*');
+p_route(waypoints, 1:num_waypoints, num_waypoints);
+title('Un-optimised N-N route');
+
+% plot randomly generated waypoint list
+figure();
+hold on;
+plot(waypoints(:, 1), waypoints(:, 2), 'b--');
+plot(waypoints(:, 1), waypoints(:, 2), 'r*');
+p_route(waypoints, 1:num_waypoints, num_waypoints);
+title('Randomly generated waypoint route');
 
 % function for drawing text at each point
 function p_route(route_array, route, num_waypoints)
