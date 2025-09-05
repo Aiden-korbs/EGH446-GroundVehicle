@@ -13,8 +13,6 @@ unordered_waypoints.y = randi([-500 500],1,10);
 function [ordered_wp_x, ordered_wp_y] = order_waypoints(wp_x, wp_y)
     % organise the waypoints in the way the function expects
     waypoints = [wp_x(:), wp_y(:)];
-    % add robot origin to the start of the waypoint list
-    waypoints = [0, 0; waypoints];
     num_waypoints = size(waypoints, 1);
 
     % set up waypoint index array and empty route array
@@ -45,7 +43,7 @@ function [ordered_wp_x, ordered_wp_y] = order_waypoints(wp_x, wp_y)
     % 2-opt swap
     % optimise n-n generated route with 2-opt swap
     improved = true;
-    tolerance = 1e-12;  % tolerance set to avoid floating point errors
+    tolerance = 1e-12;
     
     % helper method for computing distance
     get_dist = @(a,b) pdist2(waypoints(a, :), waypoints(b, :));
