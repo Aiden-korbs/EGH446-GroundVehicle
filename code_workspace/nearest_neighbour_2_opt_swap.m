@@ -2,7 +2,7 @@
 close all; clear all; clc;
 
 % randomised waypoint list
-num_waypoints = 10;
+num_waypoints = 20;
 waypoints = randi([-100 100], num_waypoints, 2);
 
 % set up waypoint index array and empty route array

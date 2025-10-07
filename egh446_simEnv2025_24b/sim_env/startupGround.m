@@ -45,7 +45,7 @@ function [ordered_wp_x, ordered_wp_y] = order_waypoints(wp_x, wp_y)
     % 2-opt swap
     % optimise n-n generated route with 2-opt swap
     improved = true;
-    tolerance = 1e-12;  % tolerance set to avoid floating point errors
+    tolerance = 1e-12;
     
     % helper method for computing distance
     get_dist = @(a,b) pdist2(waypoints(a, :), waypoints(b, :));
